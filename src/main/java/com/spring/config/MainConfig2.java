@@ -18,7 +18,7 @@ import com.spring.bean.Person;
 		@Filter(type = FilterType.ANNOTATION, classes = {Controller.class}),
 		@Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
 }, useDefaultFilters = false)
-@Import(Color.class)	//Id默认是组件的全类名
+@Import({Color.class, MyImportSelector.class})	//Id默认是组件的全类名
 public class MainConfig2 {
 	
 	/**
