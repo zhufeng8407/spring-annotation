@@ -18,7 +18,16 @@ import com.spring.service.BookService;
  * 		3. @Qualifier("bookService2")
  * 		4. @Primary	首选装配 
  * 2. @Resource 注解
- * 	
+ * 
+ * 3. Autowired: 构造器，参数，方法，属性
+ * 
+ * 4. 自定义组件想要使用spring容器底层的一些组件（applicationcontext，BeanFactory）
+ * 		让自定义组件实现***aware，在创建对象的时候会调用接口规定的方法注入组件。
+ * 		把spring底层一些组件注入到自定义的bean中
+ * 		***aware: 功能使用XXXProcessor
+ * 		ApplicationContextAware = ApplicationContextAwareProcessor
+ * 
+ * 		
  * @author zhufeng
  *
  */
