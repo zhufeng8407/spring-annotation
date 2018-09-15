@@ -18,8 +18,8 @@ public class LogAspects {
 
 	@Before("pointCut()")
 	public void logStart(JoinPoint joinPoint) {
-		joinPoint.getArgs();
-		System.out.println(joinPoint.getSignature().getName() + "方法运行开始----------------方法参数是： " + Arrays.toString(joinPoint.getArgs()));
+		
+		System.out.println(joinPoint.getTarget().getClass().getName() + " 类的" +  joinPoint.getSignature().getName() + "方法运行开始----------------方法参数是： " + Arrays.toString(joinPoint.getArgs()));
 	}
 	 
 	@After("pointCut()")
@@ -27,8 +27,8 @@ public class LogAspects {
 		System.out.println("方法运行结束=================");
 	}
 	
-	@AfterReturning("pointCut()")
-	public void logAfterReturn() {
-		System.out.println("方法返回之后=================");
+	@AfterReturning(value = "pointCut()", returning = "result")
+	public void logAfterReturn(Object result) {
+		System.out.println("方法返回之后=================返回结果： " + result);
 	}
 }
