@@ -8,7 +8,7 @@ import com.spring.aop.LogAspects;
 import com.spring.aop.MathCalculator;
 
 /**
- * 
+ * AOP使用：
  * 1. 导入Aop模块（spring-aspects)
  * 2. 定义一个业务逻辑类
  * 3. 定义一个日志切面类（LogAspects）
@@ -23,6 +23,11 @@ import com.spring.aop.MathCalculator;
  * 5. 将切面类和业务逻辑类（目标方法所在类）都加入到容器
  * 6. 必须告诉spring哪个类是切面类（给切面类加上@Aspect注解）
  * 7. 给配置类中加入@EnableAspectJAutoProxy 开启基于注解的AOP模式
+ * 
+ * AOP原理：
+ * 		@EnableAspectJAutoProxy：
+ * 		1. EnableAspectJAutoProxy是什么
+ * 			@Import(AspectJAutoProxyRegistrar.class): 给容器导入组件
  * 
  * @author zhufeng
  *
