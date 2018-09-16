@@ -32,6 +32,9 @@ import com.spring.bean.MyBeanPostProcessor;
 	 										* or a custom init-method). The bean will already be populated with property values.
 	5. BeanPostProcessor执行顺序：遍历得到所有的BeanPostProcessor，挨个执行BeforeInitialization一旦返回null则跳出for循环，不会执行后面的
 								BeanPostProcessor的BeforeInitialization。
+								
+								populateBean(beanName, mbd, instanceWrapper);赋值。
+								赋值完成后执行初始化，
 	
 								applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 								invokeInitMethods(beanName, wrappedBean, mbd);
