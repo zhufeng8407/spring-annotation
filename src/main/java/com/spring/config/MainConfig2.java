@@ -13,8 +13,8 @@ import com.spring.bean.Color;
 import com.spring.bean.Person;
 
 @Configuration
-//@ComponentScan(value="com.spring")
-@ComponentScan(value="com.spring", includeFilters = {
+@ComponentScan(value="com.spring.service")
+@ComponentScan(value="com.spring.controller", includeFilters = {
 		@Filter(type = FilterType.ANNOTATION, classes = {Controller.class}),
 		@Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
 }, useDefaultFilters = false)

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.spring.config.MainConfig2;
 import com.spring.config.MainConfigLifeCycle;
 
 public class MainTest {
@@ -13,7 +14,7 @@ public class MainTest {
 		
 //		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
 		
-		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigLifeCycle.class);
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
 		
 		System.out.println("容器创建完成======");
 //		Optional.ofNullable(applicationContext.getBean(Person.class)).ifPresent(System.out::println);

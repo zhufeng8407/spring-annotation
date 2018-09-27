@@ -2,7 +2,7 @@ package com.spring.service;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("bookService2")
 public class BookService {
 
 }
