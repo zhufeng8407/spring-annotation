@@ -1,0 +1,26 @@
+Spring容器的创建和刷新
+	AnnotationConfigApplicationContext的refresh()方法
+		1.prepareRefresh();刷新的预处理
+			1）initPropertySources()	 // For subclasses: do nothing by default.留给子类实现的，初始化一些属性设置
+			2）getEnvironment().validateRequiredProperties(); 校验属性合法
+			3）this.earlyApplicationEvents = new LinkedHashSet<ApplicationEvent>(); 保存容器中的一些早期事件
+		2.obtainFreshBeanFactory(); 获取bean工厂
+			1）refreshBeanFactory(); 刷新bean工厂
+				创建一个this.beanFactory = new DefaultListableBeanFactory();
+				设置ID
+			2）getBeanFactory(); 返回刚才GenericApplicationContext创建的DefaultListableBeanFactory对象
+			3）return beanFactory; 将BeanFactory返回 
+		3. prepareBeanFactory(beanFactory); BeanFactory的预准备工作，进行一些设置
+			1） beanFactory.setBeanClassLoader(getClassLoader()); 设置BeanFactory的类加载器
+			2） beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader())); 设置BeanFactory的表达式解析器
+			3） 设置BeanFactory的。。。。。。
+			4） 添加部分的BeanFactory的BeanPostProcessor。。beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
+			5） 设置忽略的自动装配的接口 beanFactory.ignoreDependencyInterface(EnvironmentAware.class);
+			6） 注册可以解析的自动装配  beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory); 我们直接能在组件中自动装配 @Autowired 
+					BeanFactory,ResourceLoader,ApplicationEventPublisher,ApplicationContext
+			7) 添加BeanPostProcessor	new ApplicationListenerDetector(this)
+			8） 添加编译时的AspectJ支持
+			9） 给BeanFactory中注册一些能用的组件	比如：environment， systemProperties Map<String, Object>， systemEnvironment Map<String, Object>
+		4. postProcessBeanFactory(beanFactory);BeanFactory准备工作完成后进行的后置处理
+			这个方法也是为子类准备的，子类通过重写这个方法来在BeanFactory创建并预准备完成以后做进一步的设置
+			
