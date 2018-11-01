@@ -23,4 +23,9 @@ Spring容器的创建和刷新
 			9） 给BeanFactory中注册一些能用的组件	比如：environment， systemProperties Map<String, Object>， systemEnvironment Map<String, Object>
 		4. postProcessBeanFactory(beanFactory);BeanFactory准备工作完成后进行的后置处理
 			这个方法也是为子类准备的，子类通过重写这个方法来在BeanFactory创建并预准备完成以后做进一步的设置
+=====================以上是BeanFactory的创建及预准备工作===============================================
+		5. invokeBeanFactoryPostProcessors(beanFactory); 执行BeanFactory的后置处理器。在BeanFactory标准初始化之后
+			二个接口：BeanFactoryPostProcessor， BeanDefinitionRegistryPostProcessor（是前一个的子类，是给容器添加额外组件的）
+			1）。 执行BeanFactoryPostProcessor的方法
+				1） 获取所有的BeanDefinitionRegistryPostProcessor
 			
