@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @author zhufeng
  *
  */
-@Component
+//@Component
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
 	@Override

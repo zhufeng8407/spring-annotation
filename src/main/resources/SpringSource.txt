@@ -28,4 +28,9 @@ Spring容器的创建和刷新
 			二个接口：BeanFactoryPostProcessor， BeanDefinitionRegistryPostProcessor（是前一个的子类，是给容器添加额外组件的）
 			1）。 执行BeanFactoryPostProcessor的方法
 				1） 获取所有的BeanDefinitionRegistryPostProcessor
+				2)  看先执行实现了PriorityOrdered优先级接口的BeanDefinitionRegistryPostProcessor
+					invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
+						postProcessor.postProcessBeanDefinitionRegistry(registry);
+				3）  再执行实现了Ordered顺序接口的BeanDefinitionRegistryPostProcessor
+				4）  最后执行没有实现上面二个接口的
 			
